@@ -1,0 +1,104 @@
+<!doctype html>
+<html>
+ <head>
+   <meta charset="utf-8">
+   <title>Página 2</title>
+   
+   <body style="background-color: white  ;"> </body>
+
+   <style>
+    body {
+        background: white;
+        text-align: center;
+    }
+    h1{
+        color:black;
+        font-size: 35px;
+    }
+    h2 {
+        color: black;
+        font-variant: small-caps;
+        font-size: 35px;
+    }
+    p {
+        color:black;
+        font-size: 30px;
+    }
+    </style>
+
+    <script> //elemento para poner codigo javascripts
+      function init()
+      {
+        var nombreactor = document.getElementById("bestactor");
+        nombreactor.innerHTML = "˚₊‧Rami Malek‧₊˚";
+
+        var nombreactriz = document.getElementById("bestactress");
+        nombreactriz.innerHTML = "˚₊‧Lily Gladstone‧₊˚";
+
+        var nombrepeliculadrama = document.getElementById("bestdrama");
+        nombrepeliculadrama.innerHTML = "˚₊‧Oppenheimer‧₊˚";
+
+        var nombrepeliculacomedia = document.getElementById("bestcomedy");
+        nombrepeliculacomedia.innerHTML = "˚₊‧Poor Things‧₊˚";
+      }
+      window.onload = init;
+       
+    </script>
+
+ </head>
+
+ <script>
+    var x=Math.random() * 800;
+    var y=Math.random() * 600;
+    var dx=4;
+    function animate(){
+        requestAnimationFrame(animate);
+        var canvas = document.getElementById("micanvas");
+        var context = canvas.getContext("2d");
+        context.clearRect(0, 0, innerWidth, innerHeight);
+        //console.log('animando');
+        context.font = '40pt Calibri';
+        context.fillText('Golden Globe Winners 2024', x, y); 
+            
+        
+         if (x > 800 || x < 0){
+             dx= -dx;
+         }
+        x+=dx;
+        
+    }
+    animate();
+
+</script>
+
+<body>
+    <canvas id="micanvas" width="800" height="600"></canvas>
+</body>
+
+
+ <body>
+     <h1> Golden Globe Winners 2024</h1>
+     
+ </br>
+     <b><i><h2>Best Motion Picture - Drama</h2></i></b>
+     <p id="bestdrama">Name Drama</p>  
+     <img src="Oppenheimer.jpg" width="150px"> 
+ </br>
+     <b><i><h2>Best Motion Picture - Musical or Comedy</h2></i></b>
+     <p id="bestcomedy">Name Comedy</p>
+     <img src="poorthings.jpg" width="150px">
+ </br>
+    <b><i><h2>Best performance by an actress in a motion picture - drama</h2></i></b>
+     <p id="bestactress">Name Actress</p></i></b>
+     <img src="lilygladstone.webp" width="150px">
+ </br>
+     <b><i><h2>Best performance by an actor in a motion picture - drama</h2></i></b>
+     <p id="bestactor">Name Actor</p></i></b>
+     <img src="ramimalek.jpg" width="150px">
+
+    
+ </body>
+ 
+</head>
+</html>
+
