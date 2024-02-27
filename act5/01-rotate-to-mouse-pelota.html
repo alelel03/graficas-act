@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+    <meta charset="utf-8">
+    <title>Happy face potatoes</title>
+    <link rel="stylesheet" href="style.css">
+      <style>
+        body{
+          text-align: center;
+          background-image: url('ok.jpeg');
+
+          h1{
+            font-family: "Lobster", sans-serif;
+            font-weight: 400;
+            font-style: 150px;
+            color: black;
+          }
+
+          canvas{
+            border: 10px solid black;
+          }
+        }
+
+      </style>
+  </head>
+
+  
+ 
+  <body>
+    <h1> ₊˚ʚ ᗢ₊˚✧ ﾟ. Happy face potatoes ₊˚ʚ ᗢ₊˚✧ ﾟ.</h1>
+    <canvas id="canvas" width="1000" height="600"></canvas>
+    <aside></aside>
+    
+    
+    <script src="utils.js"></script>
+
+    
+    <script>
+    window.onload = function () {
+      var canvas = document.getElementById('canvas'),
+          context = canvas.getContext('2d'),
+          mouse = utils.captureMouse(canvas),
+          pelota = new Image();
+          pelota.src = "papa.png";
+        
+      (function drawFrame () {
+        window.requestAnimationFrame(drawFrame, canvas);
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        context.save();
+        
+        var x = canvas.width/2; //donde quieres que este posicionada la imagen en x, puedes poner un número
+        var y = canvas.height/2;//donde quieres que este posicionada la imagen en y, puedes poner un número
+
+        context.translate(x, y); //coordenadas donde quieres que aparezca tu imagen
+        var dx = mouse.x - x, 
+            dy = mouse.y - y;
+        var radianes = Math.atan2(dy, dx); //radians
+        console.log(radianes);
+        context.rotate(radianes); //radians
+        context.drawImage(pelota, -pelota.width/2, -pelota.height/2);
+        context.restore();
+
+      }());
+    };
+    </script>
+  </body>
+</html>
+
+<audio controls loop autoplay>
+  <source src="audio.mp3" tyope="audio/mpeg">;
+</audio>
