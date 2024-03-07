@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap" rel="stylesheet">
+    <meta charset="utf-8">
+    <title>Examen Práctico</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+         body{
+          text-align: center;
+          background-image: url('fondo1.jpeg');
+        }
+
+        h1{
+            font-family: "Parisienne", cursive;
+            font-weight: 400;
+            font-style: normal;
+            color: #DBA39F;
+            font-size: 30px;
+          }
+      
+      canvas {
+        border: 5px solid #E1D5D3;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Examen</h1>
+    <canvas id="canvas" width="1000" height="500"></canvas>
+    <aside></aside>
+    
+    <script>
+      window.onload = function () {
+        var canvas = document.getElementById('canvas'),
+            context = canvas.getContext('2d'),
+            starImg = new Image(),
+            angle = 0,
+            range = 50,
+            centerY = canvas.height / 2,
+            xspeed = 1,
+            yspeed = 0.07,
+            xpos = 0,
+            ypos = centerY;
+
+        starImg.src = 'star.png'; 
+
+        (function drawFrame () {
+          window.requestAnimationFrame(drawFrame, canvas);
+          
+          context.clearRect(0, 0, canvas.width, canvas.height);
+
+          context.drawImage(starImg, xpos, ypos);
+ 
+          xpos += xspeed;
+          angle += yspeed;
+          ypos = centerY + Math.sin(angle) * range;
+
+          if (xpos + starImg.width >= canvas.width || xpos <= 0) {
+            xspeed *= -1;
+          }
+
+          if (ypos + starImg.height >= canvas.height || ypos <= 0) {
+            yspeed *= -1;
+          }
+        }());
+      };
+    </script>
+  </body>
+</html>
+
+<audio controls loop autoplay>
+    <source src="musica.mp3" tyope="audio/mpeg">;
+  </audio>
