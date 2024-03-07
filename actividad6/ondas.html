@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+    <meta charset="utf-8">
+    <title>Animación con onda sinoidal/coseno</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body{
+          text-align: center;
+          background-color: powderblue;
+        }
+
+        h1{
+            font-family: "Lobster", sans-serif;
+            font-weight: 400;
+            font-style: 150px;
+            color: black;
+          }
+      
+        canvas {
+        border: 10px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <h1> Animación</h1>
+    <canvas id="canvas" width="500" height="400"></canvas>
+    <aside></aside>
+    
+    <script>
+      window.onload = function () {
+        var canvas = document.getElementById('canvas'),
+            context = canvas.getContext('2d'),
+            centerX = canvas.width / 2,
+            centerY = canvas.height / 2,
+            ball = {
+              x: 0,
+              y: centerY,
+              scale: 1,
+              image: new Image(),
+              draw: function() {
+                context.drawImage(this.image, this.x - (this.image.width / 2), this.y - (this.image.height / 2), this.image.width * this.scale, this.image.height * this.scale);
+              }
+            },
+            angleX = 0,
+            angleY = 0,
+            range = 50,
+            xspeed = 0.07,
+            yspeed = 0.11;
+        
+        ball.image.src = 'gato.png'; 
+        
+        (function drawFrame () {
+          window.requestAnimationFrame(drawFrame, canvas);
+          context.clearRect(0, 0, canvas.width, canvas.height);
+         
+          ball.x = centerX + Math.sin(angleX) * range;
+          ball.y = centerY + Math.sin(angleY) * range;
+          ball.scale = 1 + Math.sin(angleX) * 0.5; 
+
+          angleX += xspeed;
+          angleY += yspeed;
+
+          ball.draw();
+        }());
+      };
+    </script>
+  </body>
+</html>
+
+<audio controls loop autoplay>
+  <source src="musica.mp3" tyope="audio/mpeg">;
+</audio>
