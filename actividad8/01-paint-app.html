@@ -1,0 +1,178 @@
+<!doctype html>
+<html>
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chilanka&display=swap" rel="stylesheet">
+    <meta charset="utf-8">
+    <title>Drawing App</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+      body{
+        text-align: center;
+        width: 100%;
+        background-color: powderblue;
+      }
+      .container{
+       margin: 0px auto;
+       text-align: center;
+       width: 1000px;
+      }
+      button{
+        width: 100px;
+        height: 50px;
+        margin: 5px;
+      }
+      button:hover{
+        opacity: 0.5;
+      }
+      h1{
+        font-family: "Chilanka", cursive;
+        font-weight: 400;
+        font-style: normal;
+        color: black;
+      }
+      #purple{
+        font-family: "Chilanka", cursive;
+        font-weight: 400;
+        font-style: normal;
+        background-color: #CDB4DB;
+        color: white;
+      }
+      #pink{
+        font-family: "Chilanka", cursive;
+        font-weight: 400;
+        font-style: normal;
+        background-color: #FFC8DD;
+        color: white;
+      }
+      #darkpink{
+        font-family: "Chilanka", cursive;
+        font-weight: 400;
+        font-style: normal;
+        background-color: #FFAFCC;
+        color: white;
+      }
+      #lightblue{
+        font-family: "Chilanka", cursive;
+        font-weight: 400;
+        font-style: normal;
+        background-color: #BDE0FE;
+        color: white;
+      }
+      #blue{
+        font-family: "Chilanka", cursive;
+        font-weight: 400;
+        font-style: normal;
+        background-color: #A2D2FF;
+        color: white;
+      }
+      #grosor1{
+        font-family: "Chilanka", cursive;
+        font-weight: 400;
+        font-style: normal;
+        background-color: white;
+        color: black;
+      }
+      #grosor5{
+        font-family: "Chilanka", cursive;
+        font-weight: 400;
+        font-style: normal;
+        background-color: white;
+        color: black;
+      }
+      #grosor10{
+        font-family: "Chilanka", cursive;
+        font-weight: 400;
+        font-style: normal;
+        background-color: white;
+        color: black;
+      }
+      
+      #borrar{
+        font-family: "Chilanka", cursive;
+        font-weight: 400;
+        font-style: normal;
+        width: 300px;
+        background-color: black;
+        color: white;
+      }
+      canvas{
+            border: 10px solid black;
+          }
+    </style>
+  </head>
+  <body>
+    <h1> Animación</h1>
+    <div id = "container">
+      <div class = "colores">
+        <button id = "purple" type="button" value="#CDB4DB">purple</button>
+        <button id = "pink" type="button" value="#FFC8DD">pink</button>
+        <button id = "darkpink" type="button" value="#FFAFCC">dark pink</button>
+        <button id = "lightblue" type="button" value="#BDE0FE">lightblue</button>
+        <button id = "blue" type="button" value="#A2D2FF">blue</button>
+      </div>
+      <div id="otros">
+        <button id="grosor1" type="button" value="1">grosor 1</button>
+        <button id="grosor5" type="button" value="5">grosor 5</button>
+        <button id="grosor10" type="button" value="10">grosor 10</button>
+      </div>
+
+      <div id="otros">
+        <button id="borrar" type="button">borrar todo</button>
+      </div>
+      <canvas id="canvas" width="900px" height="700px"></canvas>
+    
+      <script src="utils.js"></script>
+      <script>
+        window.onload = function () {
+      var canvas = document.getElementById('canvas'),
+          context = canvas.getContext('2d'),
+          mouse = utils.captureMouse(canvas);
+
+      var grosorLinea = 1;
+
+      canvas.addEventListener('mousedown', function () {
+        context.beginPath();
+        context.moveTo(mouse.x, mouse.y);
+        context.lineWidth = grosorLinea;
+        canvas.addEventListener('mousemove', onMouseMove, false);
+      }, false);
+
+      canvas.addEventListener('mouseup', function () {
+        canvas.removeEventListener('mousemove', onMouseMove, false);
+      }, false);
+
+      function onMouseMove () {
+        context.lineTo(mouse.x, mouse.y);
+        context.stroke();
+      }
+
+      var colores = document.getElementsByClassName('colores')[0];
+      colores.addEventListener('click',function(event){
+        context.strokeStyle = event.target.value;
+
+      })
+
+      var clearButton = document.getElementById('borrar');
+      clearButton.addEventListener('click',function(){
+        context.clearRect(0,0, canvas.width,canvas.height);
+      })
+
+      document.getElementById('grosor1').addEventListener('click', function() {
+        grosorLinea = 1;
+      });
+
+      document.getElementById('grosor5').addEventListener('click', function() {
+        grosorLinea = 5;
+      });
+
+      document.getElementById('grosor10').addEventListener('click', function() {
+        grosorLinea = 10;
+      });
+    };
+    </script>
+    </div>
+  </body>
+</html>
+
