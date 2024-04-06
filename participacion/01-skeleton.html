@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Camel</title>
+  <style>
+    body {
+      text-align: center;
+      background-color: powderblue;
+    }
+    h1{
+      font-family: "Lobster", sans-serif;
+      font-weight: 400;
+      font-style: 150px;
+      color: black;
+    }
+    canvas {
+      border: 5px solid black;
+    }
+  </style>
+</head>
+<body>
+  <h1>Figura Tangram</h1>
+  <canvas id="canvas" width="700" height="700"></canvas>
+
+  <script>
+    var canvas = document.getElementById('canvas');
+    var ctx = canvas.getContext('2d');
+
+    ctx.fillStyle = 'red';
+    ctx.beginPath();
+    ctx.lineTo(50, 50);
+    ctx.lineTo(250, 50);
+    ctx.lineTo(150, 150);
+    ctx.fill();
+
+    ctx.fillStyle = 'blue';
+    ctx.beginPath();
+    ctx.lineTo(250, 50);
+    ctx.lineTo(150, 150);
+    ctx.lineTo(250, 250);
+    ctx.fill();
+
+    ctx.fillStyle = 'purple';
+    ctx.beginPath();
+    ctx.lineTo(150, 150);
+    ctx.lineTo(150, 350);
+    ctx.lineTo(250, 450);
+    ctx.lineTo(250, 250);
+    ctx.fill();
+
+    ctx.fillStyle = '#4AB6B8';
+    ctx.beginPath();
+    ctx.lineTo(250, 250);
+    ctx.lineTo(250, 650);
+    ctx.lineTo(450, 450);
+    ctx.lineTo(350, 350);
+    ctx.fill();
+
+    ctx.fillStyle = 'yellow';
+    ctx.beginPath();
+    ctx.lineTo(350, 150);
+    ctx.lineTo(250, 250);
+    ctx.lineTo(350, 350);
+    ctx.lineTo(450, 250);
+    ctx.fill();
+
+    ctx.fillStyle = 'orange';
+    ctx.beginPath();
+    ctx.lineTo(500, 200);
+    ctx.lineTo(650, 350);
+    ctx.lineTo(350, 350);
+    ctx.lineTo(450, 250);
+    ctx.fill();
+
+    ctx.fillStyle = 'green';
+    ctx.beginPath();
+    ctx.lineTo(350, 350);
+    ctx.lineTo(650, 650);
+    ctx.lineTo(650, 350);
+    ctx.lineTo(350, 350);
+    ctx.fill();
+
+
+  </script>
+</body>
+</html>
+
+
