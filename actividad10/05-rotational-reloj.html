@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+    <meta charset="utf-8">
+    <title>Simulación de Reloj</title>
+    <style>
+      body { 
+        text-align: center;
+        background-color: skyblue;
+      }
+      h1{
+      font-family: "Lobster", sans-serif;
+      font-weight: 400;
+      font-style: 150px;
+      color: black;
+    }
+     canvas{
+        background-color: white;
+        border: 5px solid black;
+      }
+    </style>
+  </head>
+  
+  <body>
+    <h1>Reloj</h1>
+    <canvas id="canvas" width="800" height="800"></canvas>
+    <aside></aside>
+
+    <script src="utils.js"></script>
+    <script src="./classes/arrow.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script>
+      window.onload = function () {
+        var canvas = document.getElementById('canvas'),
+            context = canvas.getContext('2d'),
+            vr1 = 0.008,
+            vr2 = 0.001,
+            vr3 = 0.006;
+
+        var horas = new Image();
+        horas.src = "horas.png";
+        var minutos = new Image();
+        minutos.src = "minutos.png";
+        var segundos = new Image();
+        segundos.src = "segundos.png";
+
+        var radianes1 = 0;
+        var radianes2 = 0;
+        var radianes3 = 0;
+
+        (function drawFrame () {
+          window.requestAnimationFrame(drawFrame, canvas);
+          context.clearRect(0, 0, canvas.width, canvas.height);
+          context.save();
+          context.translate(400, 400);
+
+          radianes1 += vr1; 
+          context.rotate(radianes1);
+          context.drawImage(horas, -horas.width/2, -horas.height/2);
+
+          radianes2 += vr2; 
+          context.rotate(-radianes1 + radianes2);
+          context.drawImage(minutos, -minutos.width/2, -minutos.height/2);
+
+          radianes3 += vr3; 
+          context.rotate(-radianes2 + radianes3);
+          context.drawImage(segundos, -segundos.width/2, -segundos.height/2);
+
+          context.restore();
+        }());
+      };
+    </script>
+  </body>
+</html>

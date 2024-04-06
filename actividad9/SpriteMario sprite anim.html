@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Galada&display=swap" rel="stylesheet">
+    <meta charset="utf-8">
+    <title>Sprite Animado</title>
+    <style>
+      body { 
+        text-align: center;
+        background-color: skyblue;
+      }
+      h1{
+        font-family: "Galada", cursive;
+        font-weight: 400;
+        font-style: normal;
+        color: black;
+      }
+      canvas{
+            border: 10px solid black;
+          }
+   
+    </style>
+  </head>
+  <body>
+    <h1>Cinnamoroll</h1>
+    <canvas id="canvas" width="500" height="500"></canvas>
+    <aside></aside>
+    
+    <script src="sprite.js"></script> 
+    <script>
+    window.onload = function () {
+        var canvas = document.getElementById("canvas");
+        var context = canvas.getContext("2d");
+        var  sanrio = new sprite(); //*** Puedes cambiar el nombre de la variable
+    
+        var centerX = canvas.width / 2 - sanrio.width / 2;
+        var centerY = canvas.height / 2 - sanrio.height / 2;
+
+      (function drawFrame () {
+        window.requestAnimationFrame(drawFrame, canvas);
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        sanrio.draw(context); 
+      }());
+
+    };
+    </script>
+  </body>
+</html>
